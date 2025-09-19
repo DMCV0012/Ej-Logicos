@@ -1,15 +1,19 @@
 import java.util.Arrays;
 import java.util.Scanner;
 public class sumaParesUnicos {
-    private static int[] leerNumeros(Scanner lector) {
-        System.out.print("Ingrese el tamaño del vector: ");
-        int n = lector.nextInt();
-        int[] nums = new int[n];
-        System.out.println("Ingrese los " + n + " números del vector:");
-        for (int i = 0; i < n; i++) {
-            nums[i] = lector.nextInt();
-        }
-        return nums;
+    public static void main(String[] args) {
+        leerNumeros();
+    }
+
+    private static void leerNumeros() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese números enteros separados por espacios: ");
+        String[] entradas = scanner.nextLine().split(" ");
+        int[] nums = Arrays.stream(entradas).mapToInt(Integer::parseInt).toArray();
+        System.out.print("Ingrese el número objetivo: ");
+        int objetivo = scanner.nextInt();
+        boolean existe = existeSuma(nums, objetivo);
+        imprimirResultado(existe);
     }
 
     private static boolean existeSuma(int[] nums, int objetivo) {
@@ -31,14 +35,5 @@ public class sumaParesUnicos {
 
     private static void imprimirResultado(boolean existe) {
         System.out.println(existe);
-    }
-
-    public static void main(String[] args) {
-        Scanner lector = new Scanner(System.in);
-        int[] nums = leerNumeros(lector);
-        System.out.print("Ingrese el número objetivo (target): ");
-        int objetivo = lector.nextInt();
-        boolean resultado = existeSuma(nums, objetivo);
-        imprimirResultado(resultado);
     }
 }

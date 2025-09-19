@@ -1,11 +1,18 @@
+import java.util.Scanner;
 public class numeroFeliz {
-
     public static void main(String[] args) {
-        System.out.println(esFeliz(19)); // → true
-        System.out.println(esFeliz(2));  // → false
+        leerNumero();
     }
 
-    public static boolean esFeliz(int n) {
+    private static void leerNumero() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese un número: ");
+        int numero = scanner.nextInt();
+        boolean esFeliz = esFeliz(numero);
+        mostrarResultado(esFeliz);
+    }
+
+    private static boolean esFeliz(int n) {
         int lento = n;
         int rapido = sumaCuadrados(n);
 
@@ -25,5 +32,9 @@ public class numeroFeliz {
             n /= 10;
         }
         return suma;
+    }
+
+    private static void mostrarResultado(boolean esFeliz) {
+        System.out.println(esFeliz); // imprime true o false
     }
 }

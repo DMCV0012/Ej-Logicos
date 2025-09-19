@@ -1,12 +1,18 @@
+import java.util.Scanner;
 public class numeroArmstrong {
-
     public static void main(String[] args) {
-        System.out.println(esArmstrong(153));   // true
-        System.out.println(esArmstrong(9474));  // true
-        System.out.println(esArmstrong(123));   // false
+        leerNumero();
     }
 
-    public static boolean esArmstrong(int n) {
+    private static void leerNumero() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese un número: ");
+        int numero = scanner.nextInt();
+        boolean esArmstrong = esArmstrong(numero);
+        mostrarResultado(esArmstrong);
+    }
+
+    private static boolean esArmstrong(int n) {
         int original = n;
         int digitos = contarDigitos(n);
         int suma = 0;
@@ -27,5 +33,9 @@ public class numeroArmstrong {
             n /= 10;
         }
         return count;
+    }
+
+    private static void mostrarResultado(boolean esArmstrong) {
+        System.out.println(esArmstrong);
     }
 }
